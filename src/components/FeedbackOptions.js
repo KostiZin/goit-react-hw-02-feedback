@@ -1,17 +1,21 @@
 import React from 'react';
+import { Button } from './FeedbackOptions.styled';
+import { Div } from './FeedbackOptions.styled';
 
-export const FeedbackOptions = ({ onGood, onBad, onNeutral }) => {
+export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
-    <div>
-      <button type="button" onClick={onGood}>
-        Good
-      </button>
-      <button type="button" onClick={onNeutral}>
-        Neutral
-      </button>
-      <button type="button" onClick={onBad}>
-        Bad
-      </button>
-    </div>
+    <Div>
+      {options.map((option, index) => (
+        <Button
+          key={index}
+          type="button"
+          onClick={() => {
+            onLeaveFeedback(option);
+          }}
+        >
+          {option.charAt(0).toUpperCase() + option.slice(1)}
+        </Button>
+      ))}
+    </Div>
   );
 };
