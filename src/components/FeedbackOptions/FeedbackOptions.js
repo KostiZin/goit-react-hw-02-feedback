@@ -1,13 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button } from './FeedbackOptions.styled';
 import { Div } from './FeedbackOptions.styled';
 
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <Div>
-      {options.map((option, index) => (
+      {options.map(option => (
         <Button
-          key={index}
+          option={option}
+          key={option}
           type="button"
           onClick={() => {
             onLeaveFeedback(option);
@@ -18,4 +20,9 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
       ))}
     </Div>
   );
+};
+
+FeedbackOptions.propTypes = {
+  options: PropTypes.array.isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
 };

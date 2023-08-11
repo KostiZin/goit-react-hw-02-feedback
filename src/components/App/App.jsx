@@ -1,8 +1,9 @@
 import { Component } from 'react';
-import { FeedbackOptions } from './FeedbackOptions';
-import { Statistics } from './Statistics';
-import { Section } from './Section';
-import { Notification } from './Notification';
+import PropTypes from 'prop-types';
+import { FeedbackOptions } from '../FeedbackOptions/FeedbackOptions';
+import { Statistics } from '../Statistics/Statistics';
+import { Section } from '../Section/Section';
+import { Notification } from '../Notification/Notification';
 
 import { Container } from './App.styled';
 
@@ -64,3 +65,9 @@ export class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+};
