@@ -4,6 +4,7 @@ export const Button = styled.button`
   width: 75px;
   height: 35px;
   border-radius: 4px;
+  text-transform: capitalize;
   background-color: ${({ option }) => {
     switch (option) {
       case 'good':

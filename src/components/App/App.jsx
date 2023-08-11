@@ -38,7 +38,10 @@ export class App extends Component {
   };
 
   render() {
-    const feedbackOptions = ['good', 'neutral', 'bad'];
+    // we use Object.keys for getting all the keys (good, neutral, bad) from our state
+    const feedbackOptions = Object.keys(this.state);
+
+    const total = this.countTotalFeedback();
 
     return (
       <Container>
@@ -49,14 +52,14 @@ export class App extends Component {
           />
         </Section>
         <Section title="Statistics">
-          {this.countTotalFeedback() === 0 ? (
+          {!total ? (
             <Notification message="There is no feedback" />
           ) : (
             <Statistics
               good={this.state.good}
               neutral={this.state.neutral}
               bad={this.state.bad}
-              total={this.countTotalFeedback()}
+              total={total}
               positivePercentage={this.countPositiveFeedbackPercentage()}
             ></Statistics>
           )}
